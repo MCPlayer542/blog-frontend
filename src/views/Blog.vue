@@ -832,6 +832,12 @@ const getTagColor = (tag) => {
     font-size: 2.5rem;
   }
   
+  /* 手机端筛选区域适配 */
+  .filter-section {
+    top: 50px; /* 适配手机端较小的导航栏高度 */
+    padding: 1.5rem 0; /* 减少筛选区域的内边距 */
+  }
+  
   .filter-bar {
     flex-direction: column;
     align-items: stretch;
@@ -866,6 +872,20 @@ const getTagColor = (tag) => {
 @media (max-width: 480px) {
   .page-title {
     font-size: 2rem;
+  }
+  
+  /* 超小屏幕筛选区域进一步优化 */
+  .filter-section {
+    top: 45px; /* 适配超小屏幕更小的导航栏高度 */
+    padding: 1rem 0; /* 进一步减少内边距 */
+  }
+}
+
+/* 极小屏幕进一步优化 */
+@media (max-width: 320px) {
+  .filter-section {
+    top: 40px; /* 适配极小屏幕的导航栏高度 */
+    padding: 0.8rem 0;
   }
   
   .post-card {

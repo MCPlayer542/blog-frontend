@@ -149,10 +149,11 @@ body {
 
 #app {
   min-height: 100vh;
-  width: 100%;
+  width: 100% !important;
   position: relative;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 /* 粒子背景 */
@@ -176,7 +177,9 @@ body {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(102, 126, 234, 0.1);
   z-index: 1000;
-  padding: 1rem 0;
+  height: auto; /* 让高度自适应内容 */
+  min-height: 70px; /* 设置最小高度 */
+  padding: 0.8rem 0; /* 桌面端默认padding */
 }
 
 .nav-container {
@@ -257,7 +260,7 @@ body {
 
 /* 移动端菜单 */
 .mobile-menu {
-  display: none;
+  display: none !important; /* 默认完全隐藏 */
   flex-direction: column;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
@@ -265,6 +268,8 @@ body {
   gap: 1rem;
   transform: translateY(-100%);
   transition: transform 0.3s ease;
+  width: 100%; /* 确保移动端菜单占满宽度 */
+  box-sizing: border-box; /* 确保padding计算在内 */
 }
 
 .mobile-menu.active {
@@ -310,20 +315,127 @@ body {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-  
-  .hamburger {
-    display: flex;
-  }
-  
-  .mobile-menu {
-    display: flex;
+  /* 手机端导航栏优化 - 减少高度 */
+  .navbar {
+    height: 50px !important; /* 直接设置高度 */
+    padding: 0.8rem 0; /* 恢复正常padding */
   }
   
   .nav-container {
     padding: 0 1rem;
+    height: 100%; /* 容器占满navbar高度 */
+  }
+  
+  .nav-brand h2 {
+    font-size: 1.2rem; /* 减小标题字体 */
+  }
+  
+  /* 优化主内容区域 */
+  .main-content {
+    padding-top: 50px; /* 匹配navbar高度 */
+    min-height: calc(100vh - 50px);
+  }
+  
+  /* 优化移动端菜单 */
+  .mobile-menu {
+    padding: 0.5rem 1rem; /* 减少菜单内边距 */
+    gap: 0.5rem; /* 减少菜单项间距 */
+  }
+  
+  .mobile-nav-link {
+    padding: 0.8rem 1rem; /* 减少菜单项内边距 */
+    font-size: 0.95rem; /* 稍微减小字体 */
+  }
+  
+  .nav-menu {
+    display: none !important; /* 强制隐藏桌面端菜单 */
+  }
+  
+  .hamburger {
+    display: flex !important; /* 强制显示汉堡菜单 */
+  }
+  
+  /* 移动端菜单在小屏幕时启用 */
+  .mobile-menu:not(.active) {
+    display: none !important; /* 没有active类时完全隐藏 */
+  }
+  
+  .mobile-menu.active {
+    display: flex !important; /* 有active类时显示 */
+    transform: translateY(0) !important; /* 点击后显示 */
+  }
+}
+
+/* 超小屏幕进一步优化 */
+@media (max-width: 480px) {
+  .navbar {
+    height: 45px !important; /* 更小的navbar高度 */
+    padding: 0.6rem 0; /* 恢复合理的padding */
+  }
+  
+  .nav-container {
+    padding: 0 0.8rem;
+    height: 100%; /* 容器占满navbar高度 */
+  }
+  
+  .nav-brand h2 {
+    font-size: 1.1rem; /* 更小的标题 */
+  }
+  
+  .main-content {
+    padding-top: 45px; /* 匹配navbar高度 */
+    min-height: calc(100vh - 45px);
+  }
+  
+  .mobile-menu {
+    padding: 0.4rem 0.8rem; /* 最小的菜单内边距 */
+    gap: 0.3rem;
+  }
+  
+  .mobile-nav-link {
+    padding: 0.7rem 0.8rem; /* 更紧凑的菜单项 */
+    font-size: 0.9rem;
+  }
+  
+  .hamburger span {
+    width: 22px; /* 稍微减小汉堡菜单图标 */
+    height: 2.5px;
+  }
+}
+
+/* 极小屏幕进一步优化 */
+@media (max-width: 320px) {
+  .navbar {
+    min-height: 40px !important; /* 极小屏幕最小高度 */
+    padding: 0.15rem 0 !important; /* 极小padding */
+  }
+  
+  .nav-container {
+    padding: 0 0.5rem;
+    min-height: 30px !important; /* 极小容器高度 */
+  }
+  
+  .main-content {
+    padding-top: 45px !important; /* 对应调整主内容区域 */
+    min-height: calc(100vh - 45px) !important;
+  }
+}
+
+/* 极小屏幕进一步优化 */
+@media (max-width: 320px) {
+  .navbar {
+    height: 40px !important; /* 极小屏幕更小高度 */
+    padding: 0.4rem 0;
+  }
+  
+  .nav-container {
+    padding: 0 0.5rem;
+    height: 100%;
+  }
+  
+  .main-content {
+    padding-top: 40px;
+    min-height: calc(100vh - 40px);
   }
 }
 

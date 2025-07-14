@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useBlogStore } from '../stores/blog'
 
@@ -44,6 +44,21 @@ const goToBlog = () => {
 const readPost = (id) => {
   router.push(`/blog/${id}`)
 }
+
+// 获取最新博文（忽略置顶逻辑，纯按时间排序）
+const latestPosts = computed(() => {
+  console.log('计算最新博文，原始posts:', blogStore.posts.map(p => ({ id: p.id, title: p.title, date: p.date, tags: p.tags })))
+  
+  const sorted = [...blogStore.posts]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+  
+  console.log('按时间排序后:', sorted.map(p => ({ id: p.id, title: p.title, date: p.date })))
+  
+  const latest = sorted.slice(0, 3)
+  console.log('最新3篇:', latest.map(p => ({ id: p.id, title: p.title, date: p.date })))
+  
+  return latest
+})
 
 // 隐藏按钮激活逻辑
 const handleSecretClick = () => {
@@ -139,7 +154,7 @@ const closePasswordDialog = () => {
         <h2 class="section-title">最新博文</h2>
         <div class="posts-grid">
           <article 
-            v-for="post in blogStore.posts.slice(0, 3)" 
+            v-for="post in latestPosts" 
             :key="post.id"
             class="post-card"
             @click="readPost(post.id)"
