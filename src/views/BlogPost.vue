@@ -25,7 +25,7 @@ const replyTo = ref(null)
 const replyContent = ref('')
 const showCommentForm = ref(false)
 
-const postId = computed(() => parseInt(route.params.id))
+const postId = computed(() => route.params.id)
 
 // 存储用户ID到localStorage
 const getUserId = () => {
@@ -377,7 +377,7 @@ const getTagColor = (tag) => {
               :disabled="isDisliking"
               :class="['dislike-btn', { 'disliked': post.user_disliked }]"
             >
-              <span class="dislike-icon">{{ post.user_disliked ? '👎' : '👍' }}</span>
+              <span class="dislike-icon">👎</span>
               <span>{{ post.user_disliked ? '已点踩' : '点踩' }}</span>
               <span class="dislike-count">({{ post.dislikes_count || 0 }})</span>
             </button>

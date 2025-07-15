@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 const API_BASE_URL = 'https://blog-backend-wkh0.onrender.com/api'
+// const API_BASE_URL = 'http://localhost:12377/api'
 
 export const useBlogStore = defineStore('blog', () => {
   // 状态
