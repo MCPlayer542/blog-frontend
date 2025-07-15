@@ -97,6 +97,8 @@ const verifyGenshinPassword = () => {
       showPasswordDialog.value = false
       genshinPassword.value = ''
       passwordError.value = ''
+      // 密码错误时跳转到原神官网
+      window.open('https://ys.mihoyo.com', '_blank')
     }, 3000)
   }
 }

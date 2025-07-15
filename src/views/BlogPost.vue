@@ -317,9 +317,11 @@ const getTagColor = (tag) => {
               <div class="post-details">
                 <span class="post-date">📅 {{ formatDate(post.date) }}</span>
                 <span class="post-author">👤 {{ post.author }}</span>
-                <span class="post-likes">❤️ {{ post.likes_count || 0 }} 点赞</span>
-                <span class="post-dislikes">👎 {{ post.dislikes_count || 0 }} 点踩</span>
-                <span class="post-comments">💬 {{ post.comments_count || 0 }} 评论</span>
+                <div class="post-stats">
+                  <span class="post-likes">❤️ {{ post.likes_count || 0 }} 点赞</span>
+                  <span class="post-dislikes">👎 {{ post.dislikes_count || 0 }} 点踩</span>
+                  <span class="post-comments">💬 {{ post.comments_count || 0 }} 评论</span>
+                </div>
               </div>
               <div class="post-tags">
                 <span
@@ -774,8 +776,24 @@ const getTagColor = (tag) => {
   flex-wrap: wrap;
 }
 
+.post-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .post-date,
 .post-author {
+  color: #5a6c7d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.post-likes,
+.post-dislikes,
+.post-comments {
   color: #5a6c7d;
   font-size: 0.9rem;
   display: flex;
@@ -933,6 +951,8 @@ const getTagColor = (tag) => {
   flex-direction: column;
   gap: 2rem;
 }
+
+
 
 .section-title {
   text-align: center;
@@ -1381,12 +1401,14 @@ const getTagColor = (tag) => {
   .interaction-section .container {
     flex-direction: column;
     align-items: stretch;
+    padding: 0 1rem;
   }
 
   .user-id-section {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .user-id-section label {
@@ -1396,12 +1418,27 @@ const getTagColor = (tag) => {
 
   .user-id-input {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .rating-section {
     width: 100%;
+    flex-direction: row;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+
+  .post-details {
     flex-direction: column;
     gap: 0.8rem;
+  }
+
+  .post-stats {
+    gap: 0.8rem;
+  }
+
+  .comments-section .container {
+    padding: 0 1rem;
   }
 
   .comment-form {
@@ -1412,6 +1449,7 @@ const getTagColor = (tag) => {
   .comment-textarea,
   .submit-comment-btn {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .comment-item {
