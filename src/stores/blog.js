@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
-const API_BASE_URL = 'https://38.12.36.246:24377/api'
+const API_BASE_URL = 'https://api.pekka.asia/api'
 // const API_BASE_URL = 'http://localhost:12377/api'
 
 export const useBlogStore = defineStore('blog', () => {
