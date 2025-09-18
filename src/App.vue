@@ -121,7 +121,7 @@ const createParticles = () => {
     <!-- 页脚 -->
     <footer class="footer">
       <div class="footer-content">
-        <p>&copy; 2024 我的博客. All rights reserved.</p>
+        <p>&copy; 2025 MCPlayer542. All rights reserved.</p>
       </div>
     </footer>
   </div>

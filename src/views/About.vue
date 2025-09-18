@@ -34,19 +34,19 @@ const contactMethods = [
   {
     icon: '📧',
     label: '邮箱',
-    value: '1779894826@qq.com',
-    link: 'mailto:1779894826@qq.com'
+    value: 'MCPlayer542@qq.com',
+    link: 'mailto:MCPlayer542@qq.com'
   },
   {
     icon: '🐙',
     label: 'GitHub',
-    value: 'github.com/Sparky579',
-    link: 'https://github.com/Sparky579'
+    value: 'github.com/MCPlayer542',
+    link: 'https://github.com/MCPlayer542'
   },
   {
     icon: '💼',
     label: '微信',
-    value: 'Kevin327_579',
+    value: 'MCPlayer542',
     link: 'https://weixin.qq.com/g/0'
   },
   {
@@ -69,7 +69,7 @@ const contactMethods = [
             <h1 class="page-title">关于我</h1>
             <div class="intro-description">
               <p>
-                我是 Sparky327, 一个人机交互 (HCI) 方向的准研一学生。
+                我是 MCPlayer542, 一个量子计算方向的博一学生。
                 我会在这里分享一些学到的知识和个人思考，以及其他一切有趣的东西。
                 欢迎与我交流！
               </p> 
@@ -78,9 +78,6 @@ const contactMethods = [
         font-size: 18px;
         animation: fadeInOut 3s infinite;
     ">
-    </p>
-    <p class="fade-text">
-        最后，欢迎加入我D世界末影队，群号：308507522。
     </p>
     
             </div>

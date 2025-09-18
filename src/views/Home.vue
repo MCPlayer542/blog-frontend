@@ -7,12 +7,12 @@ const router = useRouter()
 const blogStore = useBlogStore()
 
 const heroText = ref('')
-const fullText = '欢迎来到 Sparky327 的个人主页'
+const fullText = '欢迎来到 MCPlayer542 的个人主页'
 const typingSpeed = 150
 
 // 隐藏按钮相关
-const showGenshinButton = ref(true)
-const genshinPassword = ref('')
+const showClashRoyaleButton = ref(true)
+const clashroyalePassword = ref('')
 const showPasswordDialog = ref(false)
 const showSuccessAnimation = ref(false)
 const passwordError = ref('')
@@ -71,21 +71,21 @@ const handleSecretClick = () => {
   lastClickTime.value = now
 
   if (clickCount.value >= 5) {
-    showGenshinButton.value = true
+    showClashRoyaleButton.value = true
     clickCount.value = 0
   }
 }
 
-// 启动原神按钮点击
-const activateGenshin = () => {
+// 启动皇室战争按钮点击
+const activateClashRoyale = () => {
   showPasswordDialog.value = true
-  genshinPassword.value = ''
+  clashroyalePassword.value = ''
   passwordError.value = ''
 }
 
 // 验证密码
-const verifyGenshinPassword = () => {
-  if (genshinPassword.value === '377') {
+const verifyClashRoyalePassword = () => {
+  if (clashroyalePassword.value === '377') {
     showPasswordDialog.value = false
     // 跳转到发布页面
     router.push('/publish')
@@ -95,17 +95,17 @@ const verifyGenshinPassword = () => {
     setTimeout(() => {
       showSuccessAnimation.value = false
       showPasswordDialog.value = false
-      genshinPassword.value = ''
+      clashroyalePassword.value = ''
       passwordError.value = ''
-      // 密码错误时跳转到原神官网
-      window.open('https://ys.mihoyo.com', '_blank')
+      // 密码错误时跳转到皇室战争官网
+      window.open('https://supercell.com/en/games/clashroyale/', '_blank')
     }, 3000)
   }
 }
 
 const closePasswordDialog = () => {
   showPasswordDialog.value = false
-  genshinPassword.value = ''
+  clashroyalePassword.value = ''
   passwordError.value = ''
 }
 </script>
@@ -127,11 +127,11 @@ const closePasswordDialog = () => {
             浏览博文
           </button>
           <button 
-            v-if="showGenshinButton" 
-            @click="activateGenshin" 
-            class="btn btn-genshin"
+            v-if="showClashRoyaleButton" 
+            @click="activateClashRoyale" 
+            class="btn btn-clashroyale"
           >
-            启动原神
+            启动皇室战争
           </button>
           <button @click="router.push('/about')" class="btn btn-secondary">
             了解更多
@@ -216,17 +216,17 @@ const closePasswordDialog = () => {
     <div v-if="showPasswordDialog" class="password-overlay" @click="closePasswordDialog">
       <div class="password-dialog" @click.stop>
         <div class="dialog-header">
-          <h3>启动原神</h3>
+          <h3>启动皇室战争</h3>
           <button @click="closePasswordDialog" class="close-btn">&times;</button>
         </div>
         <div class="dialog-content">
           <p>请输入启动密码：</p>
           <input
-            v-model="genshinPassword"
+            v-model="clashroyalePassword"
             type="password"
             placeholder="请输入密码"
             class="password-input"
-            @keyup.enter="verifyGenshinPassword"
+            @keyup.enter="verifyClashRoyalePassword"
           />
           <div v-if="passwordError" class="error-message">
             {{ passwordError }}
@@ -234,7 +234,7 @@ const closePasswordDialog = () => {
         </div>
         <div class="dialog-actions">
           <button @click="closePasswordDialog" class="btn btn-cancel">取消</button>
-          <button @click="verifyGenshinPassword" class="btn btn-confirm">确认</button>
+          <button @click="verifyClashRoyalePassword" class="btn btn-confirm">确认</button>
         </div>
       </div>
     </div>
@@ -243,7 +243,7 @@ const closePasswordDialog = () => {
     <div v-if="showSuccessAnimation" class="success-animation">
       <div class="success-content">
         <div class="success-icon">⚡</div>
-        <h2 class="success-text">喜报：启动原神成功！</h2>
+        <h2 class="success-text">喜报：启动皇室战争成功！</h2>
         <div class="success-particles">
           <div class="particle" v-for="i in 20" :key="i"></div>
         </div>
@@ -342,19 +342,19 @@ const closePasswordDialog = () => {
   transform: translateY(-2px);
 }
 
-.btn-genshin {
+.btn-clashroyale {
   background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
   color: white;
   box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-  animation: genshinGlow 2s ease-in-out infinite alternate;
+  animation: clashroyaleGlow 2s ease-in-out infinite alternate;
 }
 
-.btn-genshin:hover {
+.btn-clashroyale:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
 }
 
-@keyframes genshinGlow {
+@keyframes clashroyaleGlow {
   0% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
   100% { box-shadow: 0 4px 25px rgba(255, 107, 107, 0.6); }
 }
