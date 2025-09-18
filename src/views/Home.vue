@@ -7,7 +7,7 @@ const router = useRouter()
 const blogStore = useBlogStore()
 
 const heroText = ref('')
-const fullText = '欢迎来到 MCPlayer542 的个人主页'
+const fullText = '欢迎来到 MCPlayer542 的博客'
 const typingSpeed = 150
 
 // 隐藏按钮相关

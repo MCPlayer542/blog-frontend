@@ -75,7 +75,7 @@ const createParticles = () => {
     <nav class="navbar">
       <div class="nav-container">
         <div class="nav-brand">
-          <h2>我的个人主页</h2>
+          <h2>MCPlayer542的博客</h2>
         </div>
         
         <!-- 桌面端菜单 -->
